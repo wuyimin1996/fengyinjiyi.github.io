@@ -372,7 +372,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">热度&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -408,7 +408,7 @@
 <div id="decryptionError" style="display: none;">Incorrect Password!</div>
 <div id="noContentError" style="display: none;">No content to display!</div>
 <div id="encrypt-blog" style="display:none">
-U2FsdGVkX19OAR3Hj/YzFw4Jtyb8f+z8UX8Jwko/2+f6PDwVzBixpVDLmOMQ6z+6y/vd7P8q4ZEoMAATgYcYr9Z5M/j3zUf5HQMUx8XkH+D2bWPqHtFrlrM68KXyto5xe2TxPdTMxuduicx2kydLMZxSKKRoYq779q1SJnHFXwedQE/ps+sFZ4UzDWzlxKiavWjuEUrxQLaDttKPYDKuZAvjQbm39mUY0ZsJbcrukMLOI9XrN0oO8oMdoByMTGQMRmmkcVSVrgv19meugLfEKG9UpZh1IneZnXHlBTdL6WttG9J4YuH+9tagyLQJqODBd5u1GNcRUbK/0R51QUSu0EJSkCNL52ED/BXdtNzydGAcuJKIQ3yDDDsoH3qzDby3C5WSRHxpMlkHhyBUwFCTmBcRBfoll/JA/QiRsdIx6B2Np36ulvcJz5C3HbUk4UPcGs9SsEjD89bVhLWF3te0jNuDGKqS2qyGhlpYO0ODpKobXOhzvJQPi2+T59G+bY9jvIdqLq6aMiClIFyleQdxb7gW55zSOfMgJ7KxqPDKumYVj2Ct0twqhVMsCL0qxPuYXN5mucIK5Kg1sW2DVRKEFSlZn/OP3bsMjGpp4GkWDi4=
+U2FsdGVkX184Fo58MUBlC+BirBzvpavLDogAjvWUVI4nTuvBaEwATByILOkfwDMPMUdGbBIru9KgEN/4uU31FIidpqDMqTREeNLq82iARRPqhJqZBcrHTQUBooctmiOU5BXroMFb4rlFvUjTd78wg+8oLAzLH2HKcPTdN1Sv92qwICFKFY6TKJDeFegfZJtDtlBoDQ5uRdVCrH8yBq+QAk9nf/6PbC7bsYGessgP/emsNDaZ6/HjwBzzudYgi/Hx0a/oLd3mk+cVX4dhh3Pc2uvzDG8ZrstEwjvvFfVHeVnc477ZYIT36ibIB19w3L3AfpoMkXMJrrj8hzHxFD47nMEXPSY6ngZZU/RPzafv6MO8dvivOk6paFDEK5u97lCrRIwJcosF3sirQOXSF5aoguuB6/FrxrEtYUbVN610Nk5/nwh8XC9A1mOLMbkp3Ae5AfWEc4uJmx+F8HY94RUoLBIYVHIs2bfxYCcbQnFwGm91FZWLdIgnkFCuwVyY1cdzwg2qVv9my4B8WyCo3zfY5TVV1oEfQYpw+ljsJ86L1+4a7AfYKHOJd0znBRHd+O53Wljacdy4aJ8rurVp4KfpwdDw2TXIG6gNS3k2bQEEJgo=
 </div>
 <script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
@@ -1166,7 +1166,7 @@ U2FsdGVkX19OAR3Hj/YzFw4Jtyb8f+z8UX8Jwko/2+f6PDwVzBixpVDLmOMQ6z+6y/vd7P8q4ZEoMAAT
           var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
 
           if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            $visitors.find(COUNT_CONTAINER_REF).text(0+"°C");
             return;
           }
 
@@ -1176,14 +1176,14 @@ U2FsdGVkX19OAR3Hj/YzFw4Jtyb8f+z8UX8Jwko/2+f6PDwVzBixpVDLmOMQ6z+6y/vd7P8q4ZEoMAAT
             var time = item.get('time');
             var element = document.getElementById(url);
 
-            $(element).find(COUNT_CONTAINER_REF).text(time);
+            $(element).find(COUNT_CONTAINER_REF).text(time+"°C");
           }
           for(var i = 0; i < entries.length; i++) {
             var url = entries[i];
             var element = document.getElementById(url);
             var countSpan = $(element).find(COUNT_CONTAINER_REF);
             if( countSpan.text() == '') {
-              countSpan.text(0);
+              countSpan.text(0+"°C");
             }
           }
         })
@@ -1208,7 +1208,7 @@ U2FsdGVkX19OAR3Hj/YzFw4Jtyb8f+z8UX8Jwko/2+f6PDwVzBixpVDLmOMQ6z+6y/vd7P8q4ZEoMAAT
             counter.save(null, {
               success: function(counter) {
                 var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                $element.find('.leancloud-visitors-count').text(counter.get('time')+"°C");
               },
               error: function(counter, error) {
                 console.log('Failed to save Visitor num, with error message: ' + error.message);
@@ -1228,7 +1228,7 @@ U2FsdGVkX19OAR3Hj/YzFw4Jtyb8f+z8UX8Jwko/2+f6PDwVzBixpVDLmOMQ6z+6y/vd7P8q4ZEoMAAT
             newcounter.save(null, {
               success: function(newcounter) {
                 var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time')+"°C");
               },
               error: function(newcounter, error) {
                 console.log('Failed to create');
