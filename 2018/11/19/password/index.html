@@ -374,6 +374,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/19/password/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数</span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/19/password/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -403,7 +414,7 @@
                 <span class="post-meta-item-text">字数统计&#58;</span>
               
               <span title="字数统计">
-                37
+                33
               </span>
             
 
@@ -438,7 +449,7 @@
 <div id="decryptionError" style="display: none;">Incorrect Password!</div>
 <div id="noContentError" style="display: none;">No content to display!</div>
 <div id="encrypt-blog" style="display:none">
-U2FsdGVkX1/EFLHMu0nkcqcnvqwQy69Sx61sbqcO1kjvUjI9j1VAQdnxlfe8jP8ZzlcydmQrnsHYqRag9lUwOwNvCJTrszPJv9caccPcjd/ujZTLqfOMntXdR/kjSwSXEOZgSRi7e/VFysCExFqJrrJlWPyNk59xa3sgJ2lACyIJXRdpzYv9tApO08YUH2iem3Zx2QuH5F4DCBY3gYD1TWwbcIzrreMA3H5couLMQbOrEhQ7fkhpnCSozq+GR+4hK7nrQvIzpwzaOmiLYwdVaoWyhPJjHRWbBviRVBW19np8FUls4KaFZlGo1/z/M7gmshW9Wn4d9OtHJ9TOjTTgq06/v+SF1Z75shcPhu+1mTUK7+LaUK6vIwjdyoTqC/gjH2YfYycfq7mb64CK07Gy8kDp/G4cF0eDbKHlnf9el/2KOwoAuE/PN3cFiBqjqVftmzRIEW/ajLhMdjG3JWQoy9SszafMY4hg5WRDXUifPrOv/WmfLrQjlzg4G5j6VEXRkjejSNnWxzBxJ/13Plq/QLOcxhgZ5MQ5uaFRJl+AazK/3JfkDgtuIC8QWXe09BDw0HUtZEe4yq9CRZDzsL8UENzEFR6lj0OKSwdtvI1MVBI=
+U2FsdGVkX1/QwvsFq/8bPR/iu2sWXfvs9oJEV67AEVw726iORCZHuuBcAlOIl7X2ZW18nbOjirg76re+JBXRm6BQ8DsWyio1/HsbdXhiGM7nlRY6wFTEH1f+Y7dgJtIzQzzYlyviAAXXXepQLH50d3B1eeJn2hoKMa3UeeZlEapnpqjxq1gdW3DfL2bAiD1k1rIQv1+QhQ4VoCleefAqRCsYd7vWH6IxuCJRgwH5AwEB19Fnu9iQIRyC3kboPp/1D/kGnlmzGRlrayhekM1QxKv6NUWqLqQsIihh7TOKx+Phrw5StSRGYfAuta9FJoSEZs5QhdAKTWCtKKiXOMCFcalNusD0+YqFr2aWpEUPgaTTegmkq4Pa3Yc3CccTntJG6hBmFrARJIltYjJzzxmhEqJ60C2NLdslhjKsSLp46A93B/HyOYlwEK6mxJeLTGe8/hApgp51vTZBlb28ZZwp7kImg+/LHWMYmX8+In/HN1AbCFVxr05GLI1DEDjELAqzBLxHIN5NSseuWCFFZhlCcx4qPywRIC/0s4fLgfAwnFXCsOEL9+SmGDcUW6z7l4QmJrB06xCZE0xeXSvU5jugKKNZHdNXw2uFzbb8h65Q2Yo=
 </div>
 <script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
@@ -586,7 +597,6 @@ U2FsdGVkX1/EFLHMu0nkcqcnvqwQy69Sx61sbqcO1kjvUjI9j1VAQdnxlfe8jP8ZzlcydmQrnsHYqRag
   
     <div class="comments" id="comments">
     </div>
-
   
 
 
@@ -746,7 +756,7 @@ U2FsdGVkX1/EFLHMu0nkcqcnvqwQy69Sx61sbqcO1kjvUjI9j1VAQdnxlfe8jP8ZzlcydmQrnsHYqRag
     
       <span class="post-meta-item-text">全站总字数&#58;</span>
     
-    <span title="全站总字数">118</span>
+    <span title="全站总字数">114</span>
 
 
         
@@ -917,10 +927,8 @@ U2FsdGVkX1/EFLHMu0nkcqcnvqwQy69Sx61sbqcO1kjvUjI9j1VAQdnxlfe8jP8ZzlcydmQrnsHYqRag
 
 
 
-
-  
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="/js/src/Valine.min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
   
   <script type="text/javascript">
     var GUEST = ['nick','mail','link'];
@@ -929,14 +937,19 @@ U2FsdGVkX1/EFLHMu0nkcqcnvqwQy69Sx61sbqcO1kjvUjI9j1VAQdnxlfe8jP8ZzlcydmQrnsHYqRag
       return GUEST.indexOf(item)>-1;
     });
     new Valine({
-        av: AV, 
         el: '#comments' ,
-        appId: 'QcQbK9IuOACmhtCsy6oJSRiN-gzGzoHsz,',
+        verify: false,
+        notify: true,
+        appId: 'QcQbK9IuOACmhtCsy6oJSRiN-gzGzoHsz',
         appKey: 'Im61qUesnpyrwF0DXA8otdFR',
         placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'8' || 10,
     });
   </script>
- 
+
+
   
 
   <script type="text/javascript">
