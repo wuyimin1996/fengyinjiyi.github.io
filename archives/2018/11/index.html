@@ -557,7 +557,7 @@
     
       <span class="post-meta-item-text">全站总字数&#58;</span>
     
-    <span title="全站总字数">114</span>
+    <span title="全站总字数">118</span>
 
 
         
@@ -724,8 +724,10 @@
 
 
 
+
+  
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>
   
   <script type="text/javascript">
     var GUEST = ['nick','mail','link'];
@@ -734,20 +736,14 @@
       return GUEST.indexOf(item)>-1;
     });
     new Valine({
+        av: AV, 
         el: '#comments' ,
-        verify: false,
-        notify: false,
-        appId: 'QcQbK9IuOACmhtCsy6oJSRiN-gzGzoHsz',
+        appId: 'QcQbK9IuOACmhtCsy6oJSRiN-gzGzoHsz,',
         appKey: 'Im61qUesnpyrwF0DXA8otdFR',
         placeholder: 'Just go go',
-        avatar:'mm',
-        guest_info:guest,
-        pageSize:'8' || 10,
     });
   </script>
-
-
-
+ 
   
 
   <script type="text/javascript">
