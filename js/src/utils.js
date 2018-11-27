@@ -5,29 +5,33 @@ NexT.utils = NexT.$u = {
    * Wrap images with fancybox support.
    */
   wrapImageWithFancyBox: function () {
-    $('.content img')
-      .not('[hidden]')
-      .not('.group-picture img, .post-gallery img')
-      .each(function () {
-        var $image = $(this);
-        var imageTitle = $image.attr('title');
-        var $imageWrapLink = $image.parent('a');
+    /** 
+     * 以下注释代码是NexT框架的文章内每个图片发的方法功能，若是需要可以解开注释
+    */
+    // $('.content img')
+    //   .not('[hidden]')
+    //   .not('.group-picture img, .post-gallery img')
+    //   .each(function () {
+    //     var $image = $(this);
+    //     var imageTitle = $image.attr('title');
+    //     var $imageWrapLink = $image.parent('a');
 
-        if ($imageWrapLink.size() < 1) {
-	        var imageLink = ($image.attr('data-original')) ? this.getAttribute('data-original') : this.getAttribute('src');
-          $imageWrapLink = $image.wrap('<a href="' + imageLink + '"></a>').parent('a');
-        }
 
-        $imageWrapLink.addClass('fancybox fancybox.image');
-        $imageWrapLink.attr('rel', 'group');
+    //     if ($imageWrapLink.size() < 1) {
+	  //       var imageLink = ($image.attr('data-original')) ? this.getAttribute('data-original') : this.getAttribute('src');
+    //       $imageWrapLink = $image.wrap('<a href="' + imageLink + '"></a>').parent('a');
+    //     }
 
-        if (imageTitle) {
-          $imageWrapLink.append('<p class="image-caption">' + imageTitle + '</p>');
+    //     $imageWrapLink.addClass('fancybox fancybox.image');
+    //     $imageWrapLink.attr('rel', 'group');
 
-          //make sure img title tag will show correctly in fancybox
-          $imageWrapLink.attr('title', imageTitle);
-        }
-      });
+    //     if (imageTitle) {
+    //       $imageWrapLink.append('<p class="image-caption">' + imageTitle + '</p>');
+
+    //       //make sure img title tag will show correctly in fancybox
+    //       $imageWrapLink.attr('title', imageTitle);
+    //     }
+    //   });
 
     $('.fancybox').fancybox({
       helpers: {
