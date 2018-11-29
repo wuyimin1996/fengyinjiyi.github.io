@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.xujunjie-cv.com/"/>
-  <updated>2018-11-27T07:19:40.220Z</updated>
+  <updated>2018-11-29T01:02:02.943Z</updated>
   <id>https://www.xujunjie-cv.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo音乐插件 hexo-tag-aplayer 的坑</title>
+    <link href="https://www.xujunjie-cv.com/Hexo%E9%9F%B3%E4%B9%90%E6%8F%92%E4%BB%B6%20hexo-tag-aplayer%20%E7%9A%84%E5%9D%91.html"/>
+    <id>https://www.xujunjie-cv.com/Hexo音乐插件 hexo-tag-aplayer 的坑.html</id>
+    <published>2018-11-28T11:42:00.000Z</published>
+    <updated>2018-11-29T01:02:02.943Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>&#8195;&#8195;博客相信现在好多技术大牛都有，例如博客园、简书、CSDN之类的大型博客网站，但是局限性蛮大的，只能按照网站的规则去写写文章，留个言什么的，要是个人博客就不一样了，自己的网站自己想加什么加什么，想怎么好看就怎么乱来。<br>&#8195;&#8195;在搭建博客时用的hexo-tag-aplayer这样一个音乐插件，可以很优雅地在H5页面中播放音乐，可以算是Hexo框架中最好的音乐插件之一了，体验效果请试听。。。<br></p><div id="aplayer-GwRmobDe" class="aplayer aplayer-tag-marker" style="margin-bottom:20px"><pre class="aplayer-lrc-content"></pre></div><script>var ap=new APlayer({element:document.getElementById("aplayer-GwRmobDe"),narrow:!1,autoplay:!1,showlrc:3,music:{title:"Caffeine",author:"Jeff Williams",url:"https://aifeier-123.oss-cn-qingdao.aliyuncs.com/aifeieir-Blog/music/audio/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E5%8C%97%E4%BA%AC.mp3",pic:"https://aifeier-123.oss-cn-qingdao.aliyuncs.com/aifeieir-Blog/music/poster/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E5%8C%97%E4%BA%AC.jpg",lrc:"https://aifeier-123.oss-cn-qingdao.aliyuncs.com/aifeieir-Blog/music/lyric/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E5%8C%97%E4%BA%AC%20-%20%E6%B5%B7%E9%B8%A3%E5%A8%81.lrc"}});window.aplayers||(window.aplayers=[]),window.aplayers.push(ap)</script><br><a id="more"></a><p></p><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>&#8195;&#8195;使用hexo-tag-aplayer插件的时候，可以将音乐文件、封面图片放在项目的资源文件夹中，直接引用就行，但是这样德华时间久了，项目中的资源文件夹会非常大，严重影响项目的部署效果。插件可以直接引用网络路径，这样就可以将文件上传到阿里云、七牛云之类的对象存储服务器(这里说点废话，阿里云对象存储需要money，但是不是很贵，七牛云普通用户就可以享受10G的免费存储空间，其他的云平台自己百度)，然后将文件URL复制粘贴就可以实现上面音乐播放器的效果。<br>&#8195;&#8195;问题在这，这个插件也可以设定歌曲的歌词，不过也需要引用歌词文件(一般都是lrc格式，也有txt格式等)，知道了怎么配置，那就简单，同样将歌词文件上传到相应的云平台上,然后拷贝文件路径粘贴一下，部署，发现歌词没显示出来，F12查看控制台，发现说歌词文件访问不了，存在跨域问题，绝了都！！！<br><img src="http://aifeier-123.oss-cn-qingdao.aliyuncs.com/aifeieir-Blog/postImage/2018-11-28_3.jpg" alt="图片走丢了"><br>&#8195;&#8195;为啥封面图片就可以直接配置网络路径访问呢？开始没想到在云平台进行相应的设置，光在自己博客项目一顿倒腾，没整出来，简直了。<br>&#8195;&#8195;后来直接上插件的GitHub开源项目的issues讨论里面溜达一圈，希望能找到一点线索。果然，不管是我一个人有这样的问题，插件目前的维护者给出的解决办法如下：<br></p><div class="note default"><p>&#8195;&#8195;跨域限制是浏览器为了防止诸如 CSRF 等攻击所采取的安全措施，如果歌词文件是遇到跨域问题，请考虑将歌词文件放到同源网站（如 <a href="https://www.xxwhite.com" target="_blank" rel="noopener">https://www.xxwhite.com</a> ）再进行请求，或者如果有歌词文件所在服务器的权限，请在歌词文件资源返回的 HTTP 头中添加 <code>Access-Control-Allow-Origin</code> 字段。</p></div><br>&#8195;&#8195;绝了都，歌词为什么就不能想封面图片直接通过访问资源拿到吗？就不能弄得和封面图片一个吗？算了，小白的我不懂大神的难处，只能照着维护者的意思解决喽。<p></p><h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>&#8195;&#8195;将歌词文件放到同源网站这种方法是绝对不会采纳的，这辈子都不会这么做的！那就只能去云平台将资源文件设置一下 HTTP 头，解决跨域问题，因为博主用的是阿里云，所以以下内容暂针对阿里云OSS对象存储进行解决跨域问题。<br>&#8195;&#8195;在阿里云控制台中选择“对象存储OSS”菜单，在选择你存放资源的那个Bucket(什么是Bucket，就是一个自己添加的存储空间)，然后选择“基础设置” – &gt; “跨域设置”。<br><img src="http://aifeier-123.oss-cn-qingdao.aliyuncs.com/aifeieir-Blog/postImage/2018-11-28_1.jpg" alt="图片走丢了"><br>&#8195;&#8195;然后点击“创建规则”，接着照着我的填写和勾选。<br><img src="http://aifeier-123.oss-cn-qingdao.aliyuncs.com/aifeieir-Blog/postImage/2018-11-28_2.jpg" alt="图片走丢了"><br>&#8195;&#8195;接着点击确定，再回去你的博客看看歌词是不是出来了。<br>&#8195;&#8195;还有一个小插曲，如果个人博客的域名用的是HTTPS头，那么所引用的资源文件也必须要是HTTPS头的，阿里云OSS对象存储可以直接将文件设置HTTPS头，其他的云平台自行设置，后续有机会可以再续上七牛云的设置方法。<br>其实这也不是什么很难的问题，就是自己遇上了，记录一下，希望能帮助到同样遇到的同学。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;#8195;&amp;#8195;博客相信现在好多技术大牛都有，例如博客园、简书、CSDN之类的大型博客网站，但是局限性蛮大的，只能按照网站的规则去写写文章，留个言什么的，要是个人博客就不一样了，自己的网站自己想加什么加什么，想怎么好看就怎么乱来。&lt;br&gt;&amp;#8195;&amp;#8195;在搭建博客时用的hexo-tag-aplayer这样一个音乐插件，可以很优雅地在H5页面中播放音乐，可以算是Hexo框架中最好的音乐插件之一了，体验效果请试听。。。&lt;br&gt;&lt;/p&gt;&lt;div id=&quot;aplayer-GwRmobDe&quot; class=&quot;aplayer aplayer-tag-marker&quot; style=&quot;margin-bottom:20px&quot;&gt;&lt;pre class=&quot;aplayer-lrc-content&quot;&gt;&lt;/pre&gt;&lt;/div&gt;&lt;script&gt;var ap=new APlayer({element:document.getElementById(&quot;aplayer-GwRmobDe&quot;),narrow:!1,autoplay:!1,showlrc:3,music:{title:&quot;Caffeine&quot;,author:&quot;Jeff Williams&quot;,url:&quot;https://aifeier-123.oss-cn-qingdao.aliyuncs.com/aifeieir-Blog/music/audio/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E5%8C%97%E4%BA%AC.mp3&quot;,pic:&quot;https://aifeier-123.oss-cn-qingdao.aliyuncs.com/aifeieir-Blog/music/poster/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E5%8C%97%E4%BA%AC.jpg&quot;,lrc:&quot;https://aifeier-123.oss-cn-qingdao.aliyuncs.com/aifeieir-Blog/music/lyric/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E5%8C%97%E4%BA%AC%20-%20%E6%B5%B7%E9%B8%A3%E5%A8%81.lrc&quot;}});window.aplayers||(window.aplayers=[]),window.aplayers.push(ap)&lt;/script&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="https://www.xujunjie-cv.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="博客" scheme="https://www.xujunjie-cv.com/categories/%E5%89%8D%E7%AB%AF/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="Hexo" scheme="https://www.xujunjie-cv.com/tags/Hexo/"/>
+    
+      <category term="hexo-tag-aplayer" scheme="https://www.xujunjie-cv.com/tags/hexo-tag-aplayer/"/>
+    
+      <category term="音乐插件" scheme="https://www.xujunjie-cv.com/tags/%E9%9F%B3%E4%B9%90%E6%8F%92%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>vue-cli项目中rem布局的配置</title>
