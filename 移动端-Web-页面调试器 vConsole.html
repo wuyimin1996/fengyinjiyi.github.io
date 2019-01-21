@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="My Space">
 <meta property="og:description" content="&amp;#8195;&amp;#8195;目前移动端Web开发越来越大众普遍，越来越多的前段框架技术都支持移动端兼容和适配，但是不得不说，移动端开发过程中要在手机上调试真的很麻烦，毕竟手机浏览器不能像在 PC 上一样，直接F12就弹出调试器，看到我们再控制台输出的调试信息，有时万般无奈只能使用alert来输出，这真是一个痛点！&amp;#8195;&amp;#8195;腾讯的 vConsole 插件能帮我们解决这个问题！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-05T03:56:51.214Z">
+<meta property="og:updated_time" content="2019-01-21T09:16:17.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端 Web 页面调试器 vConsole">
 <meta name="twitter:description" content="&amp;#8195;&amp;#8195;目前移动端Web开发越来越大众普遍，越来越多的前段框架技术都支持移动端兼容和适配，但是不得不说，移动端开发过程中要在手机上调试真的很麻烦，毕竟手机浏览器不能像在 PC 上一样，直接F12就弹出调试器，看到我们再控制台输出的调试信息，有时万般无奈只能使用alert来输出，这真是一个痛点！&amp;#8195;&amp;#8195;腾讯的 vConsole 插件能帮我们解决这个问题！">
@@ -416,7 +416,7 @@
                 <span class="post-meta-item-text">字数统计&#58;</span>
               
               <span title="字数统计">
-                478
+                485
               </span>
             
 
@@ -444,7 +444,7 @@
 <h2 id="下载-安装"><a href="#下载-安装" class="headerlink" title="下载 安装"></a>下载 安装</h2><p>&#8195;&#8195;首先需要下载 vConsole 的<a href="https://github.com/Tencent/vConsole/releases/tag/v3.2.0" target="_blank" rel="noopener">最新版本</a>，或者直接使用 <code>npm</code> 安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vconsole</span><br></pre></td></tr></table></figure></p>
 <p>然后复制 <code>dist/vconsole.min.js</code> 到自己的项目中。接着就是将这个插件引入到项目中：<br>&#8195;&#8195;1、使用 script 来直接直接引入 vConsole 模块。单页面应用直接在入口Html文件的 <code>&lt;hean&gt;&lt;/hean&gt;</code> 中引入：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"path/to/vconsole.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> vConsole = <span class="keyword">new</span> VConsole();</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>&#8195;&#8195;注意：这里的<code>path/to/</code>指的是vconsole.min.js文件的路径，多页面应用要在需要进行调试的每个页面都引入。<br>&#8195;&#8195;2、在入口js文件中使用 <code>require()</code> 引入模块：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> VConsole = <span class="built_in">require</span>(<span class="string">'path/to/vconsole.min.js'</span>);</span><br><span class="line"><span class="keyword">var</span> vConsole = <span class="keyword">new</span> VConsole();</span><br></pre></td></tr></table></figure></p>
-<p>&#8195;&#8195;上面第一行代码只是引入了vConsole的原型，并不会直接在页面插入调试器，需要第二行代码来实例化一个VConsole对象才可以，所以注意，一定要手动进行实例化。<br>&#8195;&#8195;3、如果是在Vue-cli项目里，那先安装vConsole到dependencies中 <code>npm install vconsole</code> ，然后在main.js中引入：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> vConsole <span class="keyword">from</span> <span class="string">'vconsole'</span></span><br></pre></td></tr></table></figure></p>
+<p>&#8195;&#8195;上面第一行代码只是引入了vConsole的原型，并不会直接在页面插入调试器，需要第二行代码来实例化一个VConsole对象才可以，所以注意，一定要手动进行实例化。<br>&#8195;&#8195;3、如果是在Vue-cli项目里，那先安装vConsole到dependencies中 <code>npm install vconsole</code> ，然后在main.js中引入：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> vConsole <span class="keyword">from</span> <span class="string">'vconsole'</span></span><br><span class="line"><span class="keyword">const</span> vconsole = <span class="keyword">new</span> vConsole()</span><br><span class="line">Vue.use(vconsole)</span><br></pre></td></tr></table></figure></p>
 <p>&#8195;&#8195;按照上面的方法就可以再移动端进行调试了，需要更加详细地了解vConsole，可以去GitHub上看<a href="https://github.com/Tencent/vConsole/blob/dev/doc/tutorial_CN.md" target="_blank" rel="noopener">文档</a>。</p>
 
       
@@ -630,7 +630,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -729,7 +729,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
